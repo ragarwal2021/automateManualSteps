@@ -16,9 +16,16 @@ public class SalesforceConnectionSession {
 
     public static ConnectorConfig SalesforceLogin(String usernameInp,String passwordInp) throws CacellationException, ConnectionException {
         
+        String orgType = System.getenv("Org Type");
+
         try{
             config = new ConnectorConfig();
-            config.setAuthEndPoint("https://login/salesforce.com/services/Soap/u/42");
+            if(orgType == "Sandbox"){
+                config.setAuthEndPoint("https://test/salesforce.com/services/Soap/u/42");
+            }else{
+                config.setAuthEndPoint("https://login/salesforce.com/services/Soap/u/42");
+            }
+            
             config.setUsername(usernameInp);
             config.setPasswrod(passwordInp);
         }catch(Exception e){
