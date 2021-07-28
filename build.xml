@@ -1,4 +1,4 @@
-<project name="JenkinProject" basedir=".">
+<project name="JenkinsProject" basedir=".">
     <target name="compileSrc" depends="compile">
         <java classname="classes.AutomateManualDeploymentSteps">
             <classpath>
@@ -8,7 +8,7 @@
             <arg vlue="${filter}" />
         </java>
     </target>
-    <target>
+    <target name="compile">
         <mkdir dir="target/classes" />
         <javac srcdir="src" destdir="target/classes" includeantruntime="true" debug="true">
             <pathelement path="target/classese" />
