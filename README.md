@@ -1,1 +1,2 @@
 # automateManualSteps
+Testing purpose
