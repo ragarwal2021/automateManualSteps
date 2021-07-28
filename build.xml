@@ -1,6 +1,6 @@
 <project name="JenkinProject" basedir=".">
     <target name="compileSrc" depends="compile">
-        <java classname="">
+        <java classname="classes.AutomateManualDeploymentSteps">
             <classpath>
                 <pathelement path="target/classese" />
                 <filelist refid="jarList" />
