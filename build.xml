@@ -1,0 +1,26 @@
+<project name="JenkinProject" basedir=".">
+    <target name="compileSrc" depends="compile">
+        <java classname="">
+            <classpath>
+                <pathelement path="target/classese" />
+                <filelist refid="jarList" />
+            </classpath>
+            <arg vlue="${filter}" />
+        </java>
+    </target>
+    <target>
+        <mkdir dir="target/classes" />
+        <javac srcdir="src" destdir="target/classes" includeantruntime="true" debug="true">
+            <pathelement path="target/classese" />
+            <filelist refid="jarList" />
+        </javac>
+    </target>
+    <filelist id="jarList">
+        <file name="lib/commons-lang3-3.6.jar" />
+        <file name="lib/force-metadata-api-52.2.0.jar" />
+        <file name="lib/force-partner-api-52.2.0.jar" />
+        <file name="lib/force-tooling-api.jar" />
+        <file name="lib/force-wsc-52.2.0.jar" />
+        <file name="lib/opencsv-4.1.jar" />
+    </filelist>
+</project>

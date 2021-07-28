@@ -1,1 +1,0 @@
-This is teting the commit in git.
