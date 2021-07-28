@@ -21,7 +21,7 @@ import com.sforce.ws.ConnectionException;
 import com.sforce.ws.ConnectorConfig;
 import com.sforce.ws.transport.SoapConnection;
 import sailpoint.connector.salesforce.webservices.partner.PicklistEntry;
-import com.sforce.soap.metadata,MetadataConnection;
+import com.sforce.soap.metadata.MetadataConnection;
 
 public class AutomateManualDeploymentSteps{
     public static void main(String[] args) throws ConnectionException, Cancellationexception, IOException {
