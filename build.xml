@@ -11,8 +11,10 @@
     <target name="compile">
         <mkdir dir="target/classes" />
         <javac srcdir="src" destdir="target/classes" includeantruntime="true" debug="true">
-            <pathelement path="target/classese" />
-            <filelist refid="jarList" />
+            <classpath>
+                <pathelement path="target/classese" />
+                <filelist refid="jarList" />
+            </classpath>
         </javac>
     </target>
     <filelist id="jarList">
