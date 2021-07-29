@@ -12,7 +12,7 @@
         <mkdir dir="target/classes" />
         <javac srcdir="src" destdir="target/classes" includeantruntime="true" debug="true">
             <classpath>
-                <pathelement path="target/classese" />
+                <pathelement path="target/classes" />
                 <filelist refid="jarList" />
             </classpath>
         </javac>
