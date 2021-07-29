@@ -32,11 +32,23 @@ public class MetadataProcess{
 
     //Get Client Id and Client Secret from Connected App
     public static boolean getClientIdAndSecret(MetadataConnection Metadatacon) throws ConnectionException, IOException{
-        
-        ReadResult readResult = Metadatacon.readMetadata("ConnectedApp", new String[] {"Liberty_Cloud_Forge" });
-        Metadata[] mdInfo = readResult.getRecords();
-        System.out.println("Number of component info returned: " + mdInfo.length);
-        return true;
+        try {
+            ReadResult readResult = Metadatacon.readMetadata("ConnectedApp", new String[] {"Liberty_Cloud_Forge" });
+            Metadata[] mdInfo = readResult.getRecords();
+            System.out.println("Number of component info returned: " + mdInfo.length);
+            for (Metadata md : mdInfo) {
+                if (md != null) {
+                    ConnectedApp obj = (ConnectedApp) md;
+                    System.out.println("Connected App Label " + obj.getLabel());
+                    
+                } else {
+                    System.out.println("Empty metadata.");
+                }
+            }
+            return true;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
 }
