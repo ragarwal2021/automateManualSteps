@@ -22,9 +22,9 @@ public class SalesforceConnectionSession {
         try{
             config = new ConnectorConfig();
             if(orgType == "Sandbox"){
-                config.setAuthEndpoint("https://test/salesforce.com/services/Soap/u/42");
+                config.setAuthEndpoint("https://test/salesforce.com/services/Soap/u/42/");
             }else{
-                config.setAuthEndpoint("https://login/salesforce.com/services/Soap/u/42");
+                config.setAuthEndpoint("https://login/salesforce.com/services/Soap/u/42/");
             }
             
             config.setUsername(usernameInp);
