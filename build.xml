@@ -5,7 +5,7 @@
                 <pathelement path="target/classese" />
                 <filelist refid="jarList" />
             </classpath>
-            <arg vlue="${filter}" />
+            <arg value="${filter}" />
         </java>
     </target>
     <target name="compile">
