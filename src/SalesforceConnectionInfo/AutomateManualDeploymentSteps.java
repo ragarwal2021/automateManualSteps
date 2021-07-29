@@ -33,6 +33,7 @@ public class AutomateManualDeploymentSteps{
 
          String username = System.getenv("Username");
          String password = System.getenv("Password");
+         password += "pCQB6amhBcqkmHcmRBDOCbXqv";
         //Connecting to Salesforce Org
         ConnectorConfig salesforceOrgConfig = SalesforceConnectionSession.SalesforceLogin(username,password);
         PartnerConnection orgConnection = null;
@@ -45,18 +46,22 @@ public class AutomateManualDeploymentSteps{
             saleforceOrgConnected = true;
 
             System.out.println(">>>Logged in successfully in Salesforce Org as User --" + orgUserInfo.getUserName());
-        //All steps processed at this level
-        processSteps(orgConnection, salesforceOrgConfig);
+        
+            MetadataConnection Metadatacon = null;
+            Metadatacon = SalesforceConnectionSession.MetaSaleesforceLogin(orgConnection,username,password);
+            //All steps processed at this level
+        processSteps(orgConnection, salesforceOrgConfig,Metadatacon);
 
     }
 
-    public static void processSteps(PartnerConnection orgConnection, ConnectorConfig salesforceOrgConfig){
+    public static void processSteps(PartnerConnection orgConnection, ConnectorConfig salesforceOrgConfig, MetadataConnection Metadatacon){
 
 
         //Process Step 1 : Get Client Id and Client Secret from Salesforce Org.
-        System.out.println(">> Process Step 1 : Get Client Id and Client Secret from Salesforce Org.");
+        System.out.println(">> Processing Step 1 : Get Client Id and Client Secret from Salesforce Org.");
         try{
-            ConnectedApp connectedAppVar = new ConnectedApp();
+            //ConnectedApp connectedAppVar = new ConnectedApp();
+            Boolean result = MetadataProcess.getClientIdAndSecret(Metadatacon);
         }catch(Exception e){
             System.out.println(">> Error in processing step 1: "+ e.getMessage());
         }

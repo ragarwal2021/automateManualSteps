@@ -29,12 +29,23 @@ public class SalesforceConnectionSession {
             }
             
             config.setUsername(usernameInp);
-            config.setPassword(passwordInp+"pCQB6amhBcqkmHcmRBDOCbXqv");
+            config.setPassword(passwordInp);
             System.out.println("usernameInp--> " + usernameInp);
             System.out.println("passwordInp--> " + passwordInp);
         }catch(Exception e){
             System.out.println("Issues in Connection Config");
         }
         return config;
+    }
+
+    public static MetadataConnection MetaSaleesforceLogin(PartnerConnection partnerConfig, String username, String passwordInp) throws ConnectionException {
+
+        LoginResult lr = partnerConfig.login(usernameInp,passwordInp);
+        ConnectorConfig metadataConfig = new ConnectorConfig();
+        metadataConfig.setServiceEndpoint(lr.getMetadataServerUrl());
+        metadataConfig.setSessionId(lr.getSessionId());
+        metadataConfig.setManualLogin(false);
+        MetadataConnection connection = com.sforce.soap.metadata.Connector.newConnection(metadataConfig);
+        return connection;
     }
 }
