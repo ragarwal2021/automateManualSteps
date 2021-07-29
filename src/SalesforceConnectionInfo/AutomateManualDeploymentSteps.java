@@ -62,6 +62,7 @@ public class AutomateManualDeploymentSteps{
         try{
             //ConnectedApp connectedAppVar = new ConnectedApp();
             Boolean result = MetadataProcess.getClientIdAndSecret(Metadatacon);
+            System.out.println(">> Step 1 successfuly processed: ");
         }catch(Exception e){
             System.out.println(">> Error in processing step 1: "+ e.getMessage());
         }

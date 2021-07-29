@@ -41,9 +41,9 @@ public class MetadataProcess{
                     ConnectedApp obj = (ConnectedApp) md;
                     ConnectedAppOauthConfig connAppOAuthConfig = obj.getOauthConfig();
 
-                    System.out.println("Connected App Label " + obj.getLabel());
-                    System.out.println("Connected App Label " + connAppOAuthConfig.getConsumerKey());
-                    
+                    System.out.println("Connected App Label >>" + obj.getLabel());
+                    System.out.println("Connected App Consumer Key >> " + connAppOAuthConfig.getConsumerKey());
+                    System.out.println("Connected App Consumer Secret >> " + connAppOAuthConfig.getConsumerSecret());
                 } else {
                     System.out.println("Empty metadata.");
                 }
