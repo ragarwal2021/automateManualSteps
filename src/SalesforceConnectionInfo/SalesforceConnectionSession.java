@@ -30,6 +30,8 @@ public class SalesforceConnectionSession {
             
             config.setUsername(usernameInp);
             config.setPassword(passwordInp);
+            System.out.println("usernameInp--> " + usernameInp);
+            System.out.println("passwordInp--> " + passwordInp);
         }catch(Exception e){
             System.out.println("Issues in Connection Config");
         }
