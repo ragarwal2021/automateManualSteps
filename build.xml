@@ -2,7 +2,7 @@
     <target name="compileSrc" depends="compile">
         <java classname="classes.AutomateManualDeploymentSteps">
             <classpath>
-                <pathelement path="src/classes" />
+                <pathelement path="src" />
                 <filelist refid="jarList" />
             </classpath>
             <arg value="${filter}" />
@@ -10,15 +10,19 @@
     </target>
     <target name="compile">
         <mkdir dir="target/classes" />
-        <javac classpathref="jarList" srcdir="src" destdir="target/classes" includeantruntime="true" debug="true">
+        <javac srcdir="src" destdir="target/classes" includeantruntime="true" debug="true">
+            <classpath>
+                <pathelement path="src" />
+                <filelist refid="jarList" />
+            </classpath>
         </javac>
     </target>
-    <path id="jarList">
-        <pathelement location="lib/commons-lang3-3.6.jar" />
-        <pathelement location="lib/force-metadata-api-52.2.0.jar" />
-        <pathelement location="lib/force-partner-api-52.2.0.jar" />
-        <pathelement location="lib/force-tooling-api.jar" />
-        <pathelement location="lib/force-wsc-52.2.0.jar" />
-        <pathelement location="lib/opencsv-4.1.jar" />
-    </path>
+    <filelist id="jarList">
+        <file name="lib/commons-lang3-3.6.jar" />
+        <file name="lib/force-metadata-api-52.2.0.jar" />
+        <file name="lib/force-partner-api-52.2.0.jar" />
+        <file name="lib/force-tooling-api.jar" />
+        <file name="lib/force-wsc-52.2.0.jar" />
+        <file name="lib/opencsv-4.1.jar" />
+    </filelist>
 </project>
