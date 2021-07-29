@@ -39,7 +39,7 @@ public class MetadataProcess{
             for (Metadata md : mdInfo) {
                 if (md != null) {
                     ConnectedApp obj = (ConnectedApp) md;
-                    ConnectedAppOauthConfig connAppOAuthConfig = obj.oauthConfig;
+                    ConnectedAppOauthConfig connAppOAuthConfig = obj.getOauthConfig();
 
                     System.out.println("Connected App Label " + obj.getLabel());
                     System.out.println("Connected App Label " + connAppOAuthConfig.getConsumerKey());
