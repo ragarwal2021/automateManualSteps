@@ -2,7 +2,7 @@
     <target name="compileSrc" depends="compile">
         <java classname="classes.AutomateManualDeploymentSteps">
             <classpath>
-                <pathelement path="target/classese" />
+                <pathelement path="target/classes" />
                 <filelist refid="jarList" />
             </classpath>
             <arg value="${filter}" />
