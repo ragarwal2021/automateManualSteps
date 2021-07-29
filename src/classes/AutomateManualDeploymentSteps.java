@@ -10,6 +10,7 @@ import java.util.concurrent.CancellationException;
 import javax.print.DocFlavor.String;
 
 import com.sforce.soap.partner.Connector;
+import com.sforce.soap.partner.GetUserInfoResult;
 import com.sforce.soap.partner.DeleteResult;
 import com.sforce.soap.partner.DescribeSObjectResult;
 import com.sforce.soap.partner.PartnerConnection;
