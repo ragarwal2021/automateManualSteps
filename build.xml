@@ -14,11 +14,11 @@
         </javac>
     </target>
     <path id="jarList">
-        <pathelement name="lib/commons-lang3-3.6.jar" />
-        <pathelement name="lib/force-metadata-api-52.2.0.jar" />
-        <pathelement name="lib/force-partner-api-52.2.0.jar" />
-        <pathelement name="lib/force-tooling-api.jar" />
-        <pathelement name="lib/force-wsc-52.2.0.jar" />
-        <pathelement name="lib/opencsv-4.1.jar" />
+        <pathelement location="lib/commons-lang3-3.6.jar" />
+        <pathelement location="lib/force-metadata-api-52.2.0.jar" />
+        <pathelement location="lib/force-partner-api-52.2.0.jar" />
+        <pathelement location="lib/force-tooling-api.jar" />
+        <pathelement location="lib/force-wsc-52.2.0.jar" />
+        <pathelement location="lib/opencsv-4.1.jar" />
     </path>
 </project>
