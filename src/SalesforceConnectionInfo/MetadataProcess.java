@@ -31,11 +31,11 @@ import com.sforce.ws.ConnectorConfig;
 public class MetadataProcess{
 
     //Get Client Id and Client Secret from Connected App
-    public static boolean getClientIdAndSecret(MetadataConnection Metadatacon){
+    public static boolean getClientIdAndSecret(MetadataConnection Metadatacon) throws ConnectionException, IOException{
+        
         ReadResult readResult = Metadatacon.readMetadata("ConnectedApp", new String[] {"Liberty_Cloud_Forge" });
         Metadata[] mdInfo = readResult.getRecords();
-        System.out.println("Number of component info returned: "
-                + mdInfo.length);
+        System.out.println("Number of component info returned: " + mdInfo.length);
         return true;
     }
 
