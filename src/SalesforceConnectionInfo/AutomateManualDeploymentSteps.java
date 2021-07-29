@@ -56,7 +56,7 @@ public class AutomateManualDeploymentSteps{
         //Process Step 1 : Get Client Id and Client Secret from Salesforce Org.
         System.out.println(">> Process Step 1 : Get Client Id and Client Secret from Salesforce Org.");
         try{
-            Metadata.ConnectedApp connectedAppVar = new Metadata.ConnectedApp();
+            ConnectedApp connectedAppVar = new ConnectedApp();
         }catch(Exception e){
             System.out.println(">> Error in processing step 1: "+ e.getMessage());
         }
