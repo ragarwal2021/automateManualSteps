@@ -1,6 +1,6 @@
 <project name="JenkinsProject" basedir=".">
     <target name="compileSrc" depends="compile">
-        <java classname="SalesforceConnectionInfo.AutomateManualDeploymentSteps">
+        <java classname="AutomateManualDeploymentSteps.AutomateManualDeploymentSteps">
             <classpath>
                 <pathelement path="target/classes" />
                 <filelist refid="jarList" />
@@ -9,7 +9,8 @@
         </java>
     </target>
     <target name="compile">
-        <javac srcdir="src/SalesforceConnectionInfo" destdir="target/classes" includeantruntime="true" debug="true">
+        <mkdir dir="target/classes" />
+        <javac srcdir="src" destdir="target/classes" includeantruntime="true" debug="true">
             <classpath>
                 <pathelement path="target/classes" />
                 <filelist refid="jarList" />
