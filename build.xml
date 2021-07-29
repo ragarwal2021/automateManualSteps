@@ -2,17 +2,17 @@
     <target name="compileSrc" depends="compile">
         <java classname="classes.AutomateManualDeploymentSteps">
             <classpath>
-                <pathelement path="target/classes" />
+                <pathelement path="src/classes" />
                 <filelist refid="jarList" />
             </classpath>
             <arg value="${filter}" />
         </java>
     </target>
     <target name="compile">
-        <mkdir dir="target/classes" />
-        <javac srcdir="src" destdir="target/classes" includeantruntime="true" debug="true">
+        <mkdir dir="src/classes" />
+        <javac srcdir="src" destdir="src/classes" includeantruntime="true" debug="true">
             <classpath>
-                <pathelement path="target/classes" />
+                <pathelement path="src/classes" />
                 <filelist refid="jarList" />
             </classpath>
         </javac>
