@@ -9,8 +9,7 @@
         </java>
     </target>
     <target name="compile">
-        <mkdir dir="target/classes" />
-        <javac srcdir="src" destdir="target/classes" includeantruntime="true" debug="true">
+        <javac srcdir="src/SalesforceConnectionInfo" destdir="target/classes" includeantruntime="true" debug="true">
             <classpath>
                 <pathelement path="target/classes" />
                 <filelist refid="jarList" />
