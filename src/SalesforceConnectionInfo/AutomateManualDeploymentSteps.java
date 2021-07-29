@@ -35,6 +35,7 @@ public class AutomateManualDeploymentSteps{
         ConnectorConfig salesforceOrgConfig = SalesforceConnectionSession.SalesforceLogin(username,password);
         PartnerConnection orgConnection = null;
         try{
+            System.out.println("salesforceOrgConfig--> " + salesforceOrgConfig);
             orgConnection = Connector.newConnection(salesforceOrgConfig);
             GetUserInfoResult orgUserInfo = orgConnection.getUserInfo();
             saleforceOrgConnected = true;
