@@ -45,10 +45,10 @@ public class MetadataProcess{
                     System.out.println("Empty metadata.");
                 }
             }
-            return true;
         }catch(Exception e){
             e.printStackTrace();
         }
+        return true;
     }
 
 }
