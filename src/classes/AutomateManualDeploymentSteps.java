@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.concurrent.CancellationException;
 
-import javax.print.DocFlavor.String;
+//import javax.print.DocFlavor.String;
 
 import com.sforce.soap.partner.Connector;
 import com.sforce.soap.partner.GetUserInfoResult;
@@ -35,7 +35,7 @@ public class AutomateManualDeploymentSteps{
         ConnectorConfig salesforceOrgConfig = SalesforceConnectionSession.SalesforceLogin(username,password);
         PartnerConnection orgConnection = null;
         try{
-            orgConnection = Connector.newConneciton(salesforceOrgConfig);
+            orgConnection = Connector.newConnection(salesforceOrgConfig);
             GetUserInfoResult orgUserInfo = orgConnection.getUserInfo();
             saleforceOrgConnected = true;
 
