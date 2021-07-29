@@ -1,9 +1,11 @@
 package AutomateManualDeploymentSteps;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.concurrent.CancellationException;
 
 import com.sforce.soap.metadata.MetadataConnection;
+import com.sforce.soap.partner.Connector;
+import com.sforce.soap.partner.GetUserInfoResult;
 import com.sforce.soap.partner.LoginResult;
 import com.sforce.soap.partner.PartnerConnection;
 import com.sforce.soap.tooling.ToolingConnection;

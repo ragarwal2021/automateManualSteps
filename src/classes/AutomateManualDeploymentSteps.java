@@ -1,8 +1,8 @@
 package AutomateManualDeploymentSteps;
 
 import java.awt.List;
-import java.io.*;
-import java.lang.*;
+import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.concurrent.CancellationException;
