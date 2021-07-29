@@ -23,7 +23,7 @@ import com.sforce.ws.transport.SoapConnection;
 import com.sforce.soap.metadata.MetadataConnection;
 
 public class AutomateManualDeploymentSteps{
-    public static void main(String[] args) throws ConnectionException, Cancellationexception, IOException {
+    public static void main(String[] args) throws ConnectionException, CancellationException, IOException {
          boolean saleforceOrgConnected = false;
 
          String username = System.getenv("Username");
