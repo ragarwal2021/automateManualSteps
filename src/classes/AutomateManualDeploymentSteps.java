@@ -3,7 +3,9 @@ package AutomateManualDeploymentSteps;
 import java.awt.List;
 import java.io.*;
 import java.lang.*;
-import java.util.*;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.concurrent.CancellationException;
 
 import javax.print.DocFlavor.String;
 
