@@ -2,7 +2,7 @@
     <target name="compileSrc" depends="compile">
         <java classname="SalesforceConnectionInfo.AutomateManualDeploymentSteps">
             <classpath>
-                <pathelement path="src" />
+                <pathelement path="target/classes" />
                 <filelist refid="jarList" />
             </classpath>
             <arg value="${filter}" />
@@ -12,7 +12,7 @@
         <mkdir dir="target/classes" />
         <javac srcdir="src" destdir="target/classes" includeantruntime="true" debug="true">
             <classpath>
-                <pathelement path="src" />
+                <pathelement path="target/classes" />
                 <filelist refid="jarList" />
             </classpath>
         </javac>
