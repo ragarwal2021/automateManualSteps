@@ -20,7 +20,6 @@ import com.sforce.soap.partner.sobject.SObject;
 import com.sforce.ws.ConnectionException;
 import com.sforce.ws.ConnectorConfig;
 import com.sforce.ws.transport.SoapConnection;
-import sailpoint.connector.salesforce.webservices.partner.PicklistEntry;
 import com.sforce.soap.metadata.MetadataConnection;
 
 public class AutomateManualDeploymentSteps{
