@@ -44,7 +44,7 @@ public class AutomateManualDeploymentSteps{
 
             System.out.println(">>>Logged in successfully in Salesforce Org as User --" + orgUserInfo.getUserName());
         }catch(Exception e){
-            System.out.println(">>>Issues in Salesforce Connection, Please check your credentials" + e.printStackTrace());
+            System.out.println(">>>Issues in Salesforce Connection, Please check your credentials");
         }
     }
 }
