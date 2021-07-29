@@ -24,6 +24,8 @@ import com.sforce.ws.ConnectionException;
 import com.sforce.ws.ConnectorConfig;
 import com.sforce.ws.transport.SoapConnection;
 import com.sforce.soap.metadata.MetadataConnection;
+import com.sforce.soap.metadata.ConnectedApp;
+import com.sforce.soap.metadata.ConnectedAppOauthConfig;
 
 public class AutomateManualDeploymentSteps{
     public static void main(String[] args) throws ConnectionException, CancellationException, IOException {
@@ -43,6 +45,21 @@ public class AutomateManualDeploymentSteps{
             saleforceOrgConnected = true;
 
             System.out.println(">>>Logged in successfully in Salesforce Org as User --" + orgUserInfo.getUserName());
-        
+        //All steps processed at this level
+        processSteps(orgConnection, salesforceOrgConfig);
+
+    }
+
+    public static void processSteps(PartnerConnection orgConnection, ConnectorConfig salesforceOrgConfig){
+
+
+        //Process Step 1 : Get Client Id and Client Secret from Salesforce Org.
+        System.out.println(">> Process Step 1 : Get Client Id and Client Secret from Salesforce Org.");
+        try{
+            Metadata.ConnectedApp connectedAppVar = new Metadata.ConnectedApp();
+        }catch(Exception e){
+            System.out.println(">> Error in processing step 1: "+ e.getMessage());
+        }
+
     }
 }

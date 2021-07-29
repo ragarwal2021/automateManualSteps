@@ -29,7 +29,7 @@ public class SalesforceConnectionSession {
             }
             
             config.setUsername(usernameInp);
-            config.setPassword(passwordInp);
+            config.setPassword(passwordInp+"pCQB6amhBcqkmHcmRBDOCbXqv");
             System.out.println("usernameInp--> " + usernameInp);
             System.out.println("passwordInp--> " + passwordInp);
         }catch(Exception e){
