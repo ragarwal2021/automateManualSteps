@@ -16,7 +16,7 @@ public class SalesforceConnectionSession {
 
     public static ConnectorConfig config = null;
 
-    public static ConnectorConfig SalesforceLogin(String usernameInp,String passwordInp) throws CacellationException, ConnectionException {
+    public static ConnectorConfig SalesforceLogin(String usernameInp,String passwordInp) throws CancellationException, ConnectionException {
         
         String orgType = System.getenv("Org Type");
         try{
