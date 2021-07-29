@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.opencsv.CSVReader;
-import com.sforce.soap.metadata.ActionEmailReceipentTypes;
 import com.sforce.soap.metadata.ApexCodeUnitStatus;
 import com.sforce.soap.metadata.ApexTrigger;
 import com.sforce.soap.metadata.CustomLabel;
@@ -29,7 +28,7 @@ import com.sforce.soap.partner.QueryResult;
 import com.sforce.ws.ConnectionException;
 import com.sforce.ws.ConnectorConfig;
 
-public class MetadataConnection{
+public class MetadataProcess{
 
     //Get Client Id and Client Secret from Connected App
     public static boolean getClientIdAndSecret(MetadataConnection Metadatacon){

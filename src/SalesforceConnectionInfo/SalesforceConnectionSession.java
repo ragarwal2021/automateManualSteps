@@ -38,7 +38,7 @@ public class SalesforceConnectionSession {
         return config;
     }
 
-    public static MetadataConnection MetaSaleesforceLogin(PartnerConnection partnerConfig, String username, String passwordInp) throws ConnectionException {
+    public static MetadataConnection MetaSaleesforceLogin(PartnerConnection partnerConfig, String usernameInp, String passwordInp) throws ConnectionException {
 
         LoginResult lr = partnerConfig.login(usernameInp,passwordInp);
         ConnectorConfig metadataConfig = new ConnectorConfig();
