@@ -9,20 +9,16 @@
         </java>
     </target>
     <target name="compile">
-        <mkdir dir="src/classes" />
-        <javac srcdir="src" destdir="src/classes" includeantruntime="true" debug="true">
-            <classpath>
-                <pathelement path="src/classes" />
-                <filelist refid="jarList" />
-            </classpath>
+        <mkdir dir="target/classes" />
+        <javac classpathref="jarList" srcdir="src" destdir="target/classes" includeantruntime="true" debug="true">
         </javac>
     </target>
-    <filelist id="jarList">
-        <file name="lib/commons-lang3-3.6.jar" />
-        <file name="lib/force-metadata-api-52.2.0.jar" />
-        <file name="lib/force-partner-api-52.2.0.jar" />
-        <file name="lib/force-tooling-api.jar" />
-        <file name="lib/force-wsc-52.2.0.jar" />
-        <file name="lib/opencsv-4.1.jar" />
-    </filelist>
+    <path id="jarList">
+        <pathelement name="lib/commons-lang3-3.6.jar" />
+        <pathelement name="lib/force-metadata-api-52.2.0.jar" />
+        <pathelement name="lib/force-partner-api-52.2.0.jar" />
+        <pathelement name="lib/force-tooling-api.jar" />
+        <pathelement name="lib/force-wsc-52.2.0.jar" />
+        <pathelement name="lib/opencsv-4.1.jar" />
+    </path>
 </project>
