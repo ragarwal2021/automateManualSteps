@@ -79,7 +79,8 @@ public class ProcessStepHelper{
             queryStr = "Select ID, AssigneeId,PermissionSetId FROM PermissionSetAssignment WHERE PermissionSet.Name = '"+permissionSetName+"'";
             QueryResult qrResult2 = orgConnection.query(queryStr);
             SObject[] permissionSetAssignments = qrResult2.getRecords();
-            String PermissionSetId = permissionSetAssignments[0].PermissionSetId;
+            System.out.println("permissionSetAssignments--> " + permissionSetAssignments[0].getField("PermissionSetId"));
+            /*String PermissionSetId = permissionSetAssignments[0].getField("PermissionSetId");
             
             //Get System Administrator Profile ID
             queryStr = "Select Id FROM Profile WHERE Name = 'System Administrator' LIMIT 1";
@@ -114,7 +115,7 @@ public class ProcessStepHelper{
 
             SObject[] createPSA = psaSystemAdminList.toArray(new SObject[0]);
             com.sforce.soap.metadata.SaveResult[] savePSAResult = orgConnection.create(createPSA);
-
+            */
         }catch(Exception e){
             e.printStackTrace();
         }
