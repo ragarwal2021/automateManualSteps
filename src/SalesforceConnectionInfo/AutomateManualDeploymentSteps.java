@@ -14,6 +14,7 @@ import com.sforce.soap.partner.GetUserInfoResult;
 import com.sforce.soap.partner.DeleteResult;
 import com.sforce.soap.partner.DescribeSObjectResult;
 import com.sforce.soap.partner.PartnerConnection;
+import com.sforce.soap.tooling.ToolingConnection;
 import com.sforce.soap.partner.QueryResult;
 import com.sforce.soap.partner.SaveResult;
 import com.sforce.soap.partner.Error;
@@ -38,23 +39,27 @@ public class AutomateManualDeploymentSteps{
         ConnectorConfig salesforceOrgConfig = SalesforceConnectionSession.SalesforceLogin(username,password);
         PartnerConnection orgConnection = null;
         
-            //System.out.println("salesforceOrgConfig--> " + salesforceOrgConfig);
-            orgConnection = Connector.newConnection(salesforceOrgConfig);
-            //System.out.println("orgConnection established--> " + orgConnection);
-            GetUserInfoResult orgUserInfo = orgConnection.getUserInfo();
-            //System.out.println("orgUserInfo--> " + orgUserInfo);
-            saleforceOrgConnected = true;
+        //System.out.println("salesforceOrgConfig--> " + salesforceOrgConfig);
+        orgConnection = Connector.newConnection(salesforceOrgConfig);
+        //System.out.println("orgConnection established--> " + orgConnection);
+        GetUserInfoResult orgUserInfo = orgConnection.getUserInfo();
+        //System.out.println("orgUserInfo--> " + orgUserInfo);
+        saleforceOrgConnected = true;
 
-            System.out.println(">>>Logged in successfully in Salesforce Org as User --" + orgUserInfo.getUserName());
+        System.out.println(">>>Logged in successfully in Salesforce Org as User --" + orgUserInfo.getUserName());
+    
+        MetadataConnection Metadatacon = null;
+        Metadatacon = SalesforceConnectionSession.MetaSaleesforceLogin(orgConnection,username,password);
         
-            MetadataConnection Metadatacon = null;
-            Metadatacon = SalesforceConnectionSession.MetaSaleesforceLogin(orgConnection,username,password);
-            //All steps processed at this level
-        processSteps(orgConnection, salesforceOrgConfig,Metadatacon);
+        ToolingConnection ToolingConn = null;
+        ToolingConn = SalesforceConnectionSession.ToolingSaleesforceLogin(orgConnection,username,password);
+            
+        //All steps processed at this level
+        processSteps(orgConnection, salesforceOrgConfig,Metadatacon,ToolingConn);
 
     }
 
-    public static void processSteps(PartnerConnection orgConnection, ConnectorConfig salesforceOrgConfig, MetadataConnection Metadatacon){
+    public static void processSteps(PartnerConnection orgConnection, ConnectorConfig salesforceOrgConfig, MetadataConnection Metadatacon, ToolingConnection ToolingConn){
 
 
         //Process Step 1 : Get Client Id and Client Secret from Salesforce Org.
@@ -75,6 +80,16 @@ public class AutomateManualDeploymentSteps{
             System.out.println(">> Step 2 successfuly processed: ");
         }catch(Exception e){
             System.out.println(">> Error in processing step 2: "+ e.getMessage());
+        }
+
+        //Process Step 3 : Reset Password for all active users.
+        System.out.println(">> Processing Step 3 : Resetting Password for all active users.");
+        try{
+            //ConnectedApp connectedAppVar = new ConnectedApp();
+            Boolean result1 = ProcessStepHelper.resetUserPassword(orgConnection, ToolingConn);
+            System.out.println(">> Step 3 successfuly processed: ");
+        }catch(Exception e){
+            System.out.println(">> Error in processing step 3: "+ e.getMessage());
         }
 
     }

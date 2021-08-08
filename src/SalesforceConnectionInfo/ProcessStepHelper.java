@@ -26,6 +26,8 @@ import com.sforce.soap.metadata.ConnectedAppOauthConfig;
 import com.sforce.soap.metadata.ConnectedAppAttribute;
 import com.sforce.soap.metadata.SaveResult;
 
+import.com.sforce.soap.tooling.ExecuteAnonymousResult;
+import.com.sforce.soap.tooling.ToolingConnection;
 
 import com.sforce.soap.partner.PartnerConnection;
 import com.sforce.soap.partner.QueryResult;
@@ -135,4 +137,45 @@ public class ProcessStepHelper{
         return true;
     }
 
+    //Get Client Id and Client Secret from Connected App
+    public static boolean resetUserPassword(PartnerConnection orgConnection, ToolingConnection ToolingConn) throws ConnectionException, IOException{
+        try {
+
+            GetUserInfoResult userInfo = orgConnection.getUserInfo();
+
+            String queryStr = "Select id from User where isActive = true AND Id != '"+userInfo.getUserId()+"'";
+            QueryResult qrResult1 = orgConnection.query(queryStr);
+            SObject[] activeUserList = qrResult1.getRecords();
+
+            ArrayList<SObject> usersToUpdate = new ArrayList<SObject>();
+
+            for(SObject thisUser: activeGRSDevUserList){
+                SObject newUser = new SObject();
+                newUser.setType("User");
+                newUser.setField("Id",(String)thisUser.getField("Id"));
+                Strig Email = (String) thisUser.getField("Email");
+                //String sandboxName = System.getenv("sandboxName");
+                String sandboxName = 'stage';
+                Email += "."+sandboxName;
+                newUser.setField("Email",Email);
+                usersToUpdate.add(newUser);
+            
+            }
+
+            SObject[] updateUserData = usersToUpdate.toArray(new SObject[0]);
+            com.sforce.soap.partner.SaveResult[] saveUserResult = orgConnection.update(updateUserData);
+
+            for(SaveResult r : saveUserResult){
+                if(r.isSuccess()){
+                    String debug = "System.resetPassword('"+r.getId()+"', true)";
+                    ExecuteAnonymousResult results = ToolingConn.executeAnonymous(debug);
+                }
+            }
+
+        }catch(Exception e){
+
+        }
+
+    }
+    return true;
 }

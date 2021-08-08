@@ -48,4 +48,14 @@ public class SalesforceConnectionSession {
         MetadataConnection connection = com.sforce.soap.metadata.Connector.newConnection(metadataConfig);
         return connection;
     }
+
+    public static ToolingConnection ToolingSaleesforceLogin(PartnerConnection partnerConfig, String usernameInp, String passwordInp) throws ConnectionException {
+
+        LoginResult lr = partnerConfig.login(usernameInp,passwordInp);
+        ConnectorConfig toolingConfig = new ConnectorConfig();
+        toolingConfig.setServiceEndpoint(lr.getMetadataServerUrl().replaced("/u/","/T"));
+        toolingConfig.setSessionId(lr.getSessionId());
+        ToolingConnection connection = com.sforce.soap.tooling.Connector.newConnection(toolingConfig);
+        return connection;
+    }
 }
