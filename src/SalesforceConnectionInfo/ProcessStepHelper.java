@@ -62,7 +62,6 @@ public class ProcessStepHelper{
     //Get Client Id and Client Secret from Connected App
     public static boolean assignSystemAdminProfileAndPermissionSet(PartnerConnection orgConnection) throws ConnectionException, IOException{
         try {
-            String permissionSetName = "System_Admin";
             GetUserInfoResult userInfo = orgConnection.getUserInfo();
 
             //Get list of user which has GRS Developer Profile.
@@ -73,11 +72,21 @@ public class ProcessStepHelper{
             QueryResult qrResult = orgConnection.query(queryStr);
             SObject[] activeGRSDevUserList = qrResult.getRecords();
 
+            //Get System_Admin Permission Set Id
+            queryStr = "Select Id, Name FROM PermissionSet WHERE Name = 'System_Admin'";
+            QueryResult qrResult4 = orgConnection.query(queryStr);
+            SObject[] permissionSet = qrResult4.getRecords();
+            if(permissionSet.length > 0){
+                System.out.println("permissionSet--> " + permissionSet[0].getField("Id"));
+                System.out.println("permissionSet--> " + permissionSet[0].getField("Name"));
+            }
+            
+
             //Get List of User which has alrady System admin permission set assigned
-            queryStr = "Select ID, AssigneeId,PermissionSetId FROM PermissionSetAssignment WHERE PermissionSet.Name = '"+permissionSetName+"'";
+            queryStr = "Select Id, AssigneeId,PermissionSetId FROM PermissionSetAssignment WHERE PermissionSet.Name = '"+permissionSetName+"'";
             QueryResult qrResult2 = orgConnection.query(queryStr);
             SObject[] permissionSetAssignments = qrResult2.getRecords();
-            System.out.println("permissionSetAssignments--> " + permissionSetAssignments[0].getField("PermissionSetId"));
+            
             /*String PermissionSetId = permissionSetAssignments[0].getField("PermissionSetId");
             
             //Get System Administrator Profile ID
