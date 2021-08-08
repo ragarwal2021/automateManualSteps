@@ -108,8 +108,11 @@ public class ProcessStepHelper{
             
 
             for(SObject thisUser: activeGRSDevUserList){
-                thisUser.setField("ProfileId",sysAdminProfielId);
-                usersToUpdate.add(thisUser);
+                SObject newUser = new SObject();
+                newUser.setType("User");
+                newUser.setField("ProfileId",sysAdminProfielId);
+                newUser.setField("Id",(String)thisUser.getField("Id"));
+                usersToUpdate.add(newUser);
                 //Add Sys Admin Profile only if permission set is not already assigned
                 if(permissionSetId != "" && !assigneeIdSet.contains((String)thisUser.getField("Id"))){
                     SObject psAssign = new SObject();
