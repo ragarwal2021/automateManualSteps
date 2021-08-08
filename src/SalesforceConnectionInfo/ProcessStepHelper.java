@@ -24,7 +24,7 @@ import com.sforce.soap.metadata.RemoteSiteSetting;
 import com.sforce.soap.metadata.ConnectedApp;
 import com.sforce.soap.metadata.ConnectedAppOauthConfig;
 import com.sforce.soap.metadata.ConnectedAppAttribute;
-import com.sforce.soap.metadata.SaveResult;
+import com.sforce.soap.partner.SaveResult;
 
 import com.sforce.soap.tooling.ExecuteAnonymousResult;
 import com.sforce.soap.tooling.ToolingConnection;
@@ -149,11 +149,11 @@ public class ProcessStepHelper{
 
             ArrayList<SObject> usersToUpdate = new ArrayList<SObject>();
 
-            for(SObject thisUser: activeGRSDevUserList){
+            for(SObject thisUser: activeUserList){
                 SObject newUser = new SObject();
                 newUser.setType("User");
                 newUser.setField("Id",(String)thisUser.getField("Id"));
-                Strig Email = (String) thisUser.getField("Email");
+                String Email = (String) thisUser.getField("Email");
                 //String sandboxName = System.getenv("sandboxName");
                 String sandboxName = "stage";
                 Email += "."+sandboxName;
