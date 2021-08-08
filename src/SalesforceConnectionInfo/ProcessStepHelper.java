@@ -150,15 +150,16 @@ public class ProcessStepHelper{
             ArrayList<SObject> usersToUpdate = new ArrayList<SObject>();
             
             for(SObject thisUser: activeUserList){
-                System.out.println("thisUser--> " + thisUser);
+                
                 SObject newUser = new SObject();
                 newUser.setType("User");
                 newUser.setField("Id",(String)thisUser.getField("Id"));
-                String username = (String) thisUser.getField("username");
+                String username = (String) thisUser.getField("Username");
+                System.out.println("username--> " + username);
                 //String sandboxName = System.getenv("sandboxName");
                 String sandboxName = "stage";
                 username += "."+sandboxName;
-                newUser.setField("username",username);
+                newUser.setField("Username",username);
                 usersToUpdate.add(newUser);
             
             }
