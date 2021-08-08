@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.HashMap;
 
 import com.opencsv.CSVReader;
 import com.sforce.soap.metadata.ApexCodeUnitStatus;
@@ -22,8 +26,10 @@ import com.sforce.soap.metadata.ConnectedAppOauthConfig;
 import com.sforce.soap.metadata.ConnectedAppAttribute;
 import com.sforce.soap.metadata.SaveResult;
 
+
 import com.sforce.soap.partner.PartnerConnection;
 import com.sforce.soap.partner.QueryResult;
+import com.sforce.soap.partner.GetUserInfoResult;
 
 import com.sforce.ws.ConnectionException;
 import com.sforce.ws.ConnectorConfig;
