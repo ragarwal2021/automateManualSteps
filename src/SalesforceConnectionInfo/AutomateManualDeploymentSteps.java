@@ -71,7 +71,7 @@ public class AutomateManualDeploymentSteps{
         System.out.println(">> Processing Step 2 : Moving Developers into System Admin Profile and Permission Set.");
         try{
             //ConnectedApp connectedAppVar = new ConnectedApp();
-            //Boolean result = ProcessStepHelper.getClientIdAndSecret(orgConnection);
+            Boolean result1 = ProcessStepHelper.assignSystemAdminProfileAndPermissionSet(orgConnection);
             System.out.println(">> Step 2 successfuly processed: ");
         }catch(Exception e){
             System.out.println(">> Error in processing step 2: "+ e.getMessage());
