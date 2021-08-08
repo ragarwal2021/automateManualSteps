@@ -53,6 +53,8 @@ public class SalesforceConnectionSession {
 
         LoginResult lr = partnerConfig.login(usernameInp,passwordInp);
         ConnectorConfig toolingConfig = new ConnectorConfig();
+        System.out.println('lr.getMetadataServerUrl()--> ' + lr.getMetadataServerUrl());
+        System.out.println('lr.getMetadataServerUrl().replace--> ' + lr.getMetadataServerUrl().replace("/u/","/T"));
         toolingConfig.setServiceEndpoint(lr.getMetadataServerUrl().replace("/u/","/T"));
         toolingConfig.setSessionId(lr.getSessionId());
         ToolingConnection connection = com.sforce.soap.tooling.Connector.newConnection(toolingConfig);
