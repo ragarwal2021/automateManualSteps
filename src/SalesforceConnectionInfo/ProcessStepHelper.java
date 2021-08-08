@@ -42,13 +42,11 @@ public class ProcessStepHelper{
         try {
             ReadResult readResult = Metadatacon.readMetadata("ConnectedApp", new String[] {"Liberty_Cloud_Forge" });
             Metadata[] mdInfo = readResult.getRecords();
-            System.out.println("Number of component info returned: " + mdInfo.length);
             for (Metadata md : mdInfo) {
                 if (md != null) {
                     ConnectedApp obj = (ConnectedApp) md;
                     ConnectedAppOauthConfig connAppOAuthConfig = obj.getOauthConfig();
 
-                    System.out.println("Connected App Label >>" + obj.getLabel());
                     System.out.println("Connected App Consumer Key >> " + connAppOAuthConfig.getConsumerKey());
                     System.out.println("Connected App Consumer Secret >> " + connAppOAuthConfig.getConsumerSecret());
                 } else {
