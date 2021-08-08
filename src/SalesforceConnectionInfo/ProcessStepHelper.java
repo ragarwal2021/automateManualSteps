@@ -83,7 +83,7 @@ public class ProcessStepHelper{
             
 
             //Get List of User which has alrady System admin permission set assigned
-            queryStr = "Select Id, AssigneeId,PermissionSetId FROM PermissionSetAssignment WHERE PermissionSet.Name = '"+permissionSetName+"'";
+            queryStr = "Select Id, AssigneeId,PermissionSetId FROM PermissionSetAssignment WHERE PermissionSet.Name = 'System_Admin'";
             QueryResult qrResult2 = orgConnection.query(queryStr);
             SObject[] permissionSetAssignments = qrResult2.getRecords();
             
