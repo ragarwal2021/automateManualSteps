@@ -76,16 +76,21 @@ public class ProcessStepHelper{
             queryStr = "Select Id, Name FROM PermissionSet WHERE Name = 'System_Admin'";
             QueryResult qrResult4 = orgConnection.query(queryStr);
             SObject[] permissionSet = qrResult4.getRecords();
+            String permissionSetId  = '';
             if(permissionSet.length > 0){
                 System.out.println("permissionSet--> " + permissionSet[0].getField("Id"));
                 System.out.println("permissionSet--> " + permissionSet[0].getField("Name"));
+                permissionSetId = (String)permissionSet[0].getField("Id");
+                
+                //Get List of User which has alrady System admin permission set assigned
+                queryStr = "Select Id, AssigneeId,PermissionSetId FROM PermissionSetAssignment WHERE PermissionSetId = '"+permissionSetId+"'";
+                QueryResult qrResult2 = orgConnection.query(queryStr);
+                SObject[] permissionSetAssignments = qrResult2.getRecords();
+            
             }
             
 
-            //Get List of User which has alrady System admin permission set assigned
-            queryStr = "Select Id, AssigneeId,PermissionSetId FROM PermissionSetAssignment WHERE PermissionSet.Name = 'System_Admin'";
-            QueryResult qrResult2 = orgConnection.query(queryStr);
-            SObject[] permissionSetAssignments = qrResult2.getRecords();
+            
             
             /*String PermissionSetId = permissionSetAssignments[0].getField("PermissionSetId");
             
