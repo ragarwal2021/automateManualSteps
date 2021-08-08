@@ -33,7 +33,7 @@ public class AutomateManualDeploymentSteps{
 
          String username = System.getenv("Username");
          String password = System.getenv("Password");
-         //password += "pCQB6amhBcqkmHcmRBDOCbXqv";
+         password += "pCQB6amhBcqkmHcmRBDOCbXqv";
         //Connecting to Salesforce Org
         ConnectorConfig salesforceOrgConfig = SalesforceConnectionSession.SalesforceLogin(username,password);
         PartnerConnection orgConnection = null;
