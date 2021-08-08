@@ -33,7 +33,7 @@ public class AutomateManualDeploymentSteps{
 
          String username = System.getenv("Username");
          String password = System.getenv("Password");
-         password += "pCQB6amhBcqkmHcmRBDOCbXqv";
+         //password += "pCQB6amhBcqkmHcmRBDOCbXqv";
         //Connecting to Salesforce Org
         ConnectorConfig salesforceOrgConfig = SalesforceConnectionSession.SalesforceLogin(username,password);
         PartnerConnection orgConnection = null;
@@ -61,10 +61,20 @@ public class AutomateManualDeploymentSteps{
         System.out.println(">> Processing Step 1 : Get Client Id and Client Secret from Salesforce Org.");
         try{
             //ConnectedApp connectedAppVar = new ConnectedApp();
-            Boolean result = MetadataProcess.getClientIdAndSecret(Metadatacon);
+            Boolean result = ProcessStepHelper.getClientIdAndSecret(Metadatacon);
             System.out.println(">> Step 1 successfuly processed: ");
         }catch(Exception e){
             System.out.println(">> Error in processing step 1: "+ e.getMessage());
+        }
+
+        //Process Step 2 : Move Developers into System Admin Profile and Permission Set.
+        System.out.println(">> Processing Step 2 : Moving Developers into System Admin Profile and Permission Set.");
+        try{
+            //ConnectedApp connectedAppVar = new ConnectedApp();
+            //Boolean result = ProcessStepHelper.getClientIdAndSecret(orgConnection);
+            System.out.println(">> Step 2 successfuly processed: ");
+        }catch(Exception e){
+            System.out.println(">> Error in processing step 2: "+ e.getMessage());
         }
 
     }
