@@ -30,6 +30,7 @@ import com.sforce.soap.metadata.SaveResult;
 import com.sforce.soap.partner.PartnerConnection;
 import com.sforce.soap.partner.QueryResult;
 import com.sforce.soap.partner.GetUserInfoResult;
+import com.sforce.soap.partner.sobject.SObject;
 
 import com.sforce.ws.ConnectionException;
 import com.sforce.ws.ConnectorConfig;
