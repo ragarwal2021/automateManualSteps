@@ -148,13 +148,13 @@ public class ProcessStepHelper{
             SObject[] activeUserList = qrResult1.getRecords();
 
             ArrayList<SObject> usersToUpdate = new ArrayList<SObject>();
-
+            
             for(SObject thisUser: activeUserList){
+                System.out.println("thisUser--> " + thisUser);
                 SObject newUser = new SObject();
                 newUser.setType("User");
                 newUser.setField("Id",(String)thisUser.getField("Id"));
                 String username = (String) thisUser.getField("username");
-                System.out.println("username--> " + username);
                 //String sandboxName = System.getenv("sandboxName");
                 String sandboxName = "stage";
                 username += "."+sandboxName;
