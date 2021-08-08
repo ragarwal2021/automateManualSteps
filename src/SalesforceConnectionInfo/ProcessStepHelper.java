@@ -77,6 +77,9 @@ public class ProcessStepHelper{
             QueryResult qrResult4 = orgConnection.query(queryStr);
             SObject[] permissionSet = qrResult4.getRecords();
             String permissionSetId  = "";
+
+            Set<String> assigneeIdSet = new HashSet();
+
             if(permissionSet.length > 0){
                 System.out.println("permissionSet--> " + permissionSet[0].getField("Id"));
                 System.out.println("permissionSet--> " + permissionSet[0].getField("Name"));
@@ -86,34 +89,29 @@ public class ProcessStepHelper{
                 queryStr = "Select Id, AssigneeId,PermissionSetId FROM PermissionSetAssignment WHERE PermissionSetId = '"+permissionSetId+"'";
                 QueryResult qrResult2 = orgConnection.query(queryStr);
                 SObject[] permissionSetAssignments = qrResult2.getRecords();
+                
+                for(SObject psa : permissionSetAssignments){
+                    assigneeIdSet.add((String)psa.getField("AssigneeId"));
+                }
             
             }
-            
-
-            
-            
-            /*String PermissionSetId = permissionSetAssignments[0].getField("PermissionSetId");
             
             //Get System Administrator Profile ID
             queryStr = "Select Id FROM Profile WHERE Name = 'System Administrator' LIMIT 1";
             QueryResult qrResult3 = orgConnection.query(queryStr);
             SObject[] systemAdminProfile = qrResult3.getRecords();
-            String sysAdminProfielId = systemAdminProfile[0].getField("Id");
+            String sysAdminProfielId = (String)systemAdminProfile[0].getField("Id");
 
             ArrayList<SObject> usersToUpdate = new ArrayList<SObject>();
             ArrayList<SObject> psaSystemAdminList = new ArrayList<SObject>();
 
-            Set<String> assigneeIdSet = new HashSet();
-
-            for(SObject psa : permissionSetAssignments){
-                assigneeIdSet.add(psa.getField("AssigneeId"));
-            }
+            
 
             for(SObject thisUser: activeGRSDevUserList){
                 thisUser.setField("ProfileId",sysAdminProfielId);
                 usersToUpdate.add(thisUser);
                 //Add Sys Admin Profile only if permission set is not already assigned
-                if(!assigneeIdSet.contains(thisUser.getField("Id"))){
+                if(PermissionSetId != "" && !assigneeIdSet.contains((String)thisUser.getField("Id"))){
                     SObject psAssign = new SObject();
                     psAssign.setType("PermissionSetAssignment");
                     psAssign.setField("AssigneeId", thisUser.Id);
@@ -127,7 +125,7 @@ public class ProcessStepHelper{
 
             SObject[] createPSA = psaSystemAdminList.toArray(new SObject[0]);
             com.sforce.soap.metadata.SaveResult[] savePSAResult = orgConnection.create(createPSA);
-            */
+            
         }catch(Exception e){
             e.printStackTrace();
         }
