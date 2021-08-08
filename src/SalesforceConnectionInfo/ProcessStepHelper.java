@@ -76,7 +76,7 @@ public class ProcessStepHelper{
             queryStr = "Select Id, Name FROM PermissionSet WHERE Name = 'System_Admin'";
             QueryResult qrResult4 = orgConnection.query(queryStr);
             SObject[] permissionSet = qrResult4.getRecords();
-            String permissionSetId  = '';
+            String permissionSetId  = "";
             if(permissionSet.length > 0){
                 System.out.println("permissionSet--> " + permissionSet[0].getField("Id"));
                 System.out.println("permissionSet--> " + permissionSet[0].getField("Name"));
