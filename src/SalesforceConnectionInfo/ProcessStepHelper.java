@@ -68,7 +68,7 @@ public class ProcessStepHelper{
             GetUserInfoResult userInfo = orgConnection.getUserInfo();
 
             //Get list of user which has GRS Developer Profile.
-            String queryStr = "Select Id,Username,Profile.Name FROM USER WHERE isActive = 'TRUE' "
+            String queryStr = "Select Id,Username,Profile.Name FROM USER WHERE isActive = TRUE "
                                 + "AND Profile.Name = 'GRS Developer' "
                                 + "AND ID != '"+userInfo.getUserId()+"'";
 
