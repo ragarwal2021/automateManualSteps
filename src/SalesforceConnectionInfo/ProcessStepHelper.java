@@ -111,20 +111,20 @@ public class ProcessStepHelper{
                 thisUser.setField("ProfileId",sysAdminProfielId);
                 usersToUpdate.add(thisUser);
                 //Add Sys Admin Profile only if permission set is not already assigned
-                if(PermissionSetId != "" && !assigneeIdSet.contains((String)thisUser.getField("Id"))){
+                if(permissionSetId != "" && !assigneeIdSet.contains((String)thisUser.getField("Id"))){
                     SObject psAssign = new SObject();
                     psAssign.setType("PermissionSetAssignment");
-                    psAssign.setField("AssigneeId", thisUser.Id);
-                    psAssign.setField("PermissionSetId", PermissionSetId);
+                    psAssign.setField("AssigneeId", (String)thisUser.getField("Id"));
+                    psAssign.setField("PermissionSetId", permissionSetId);
                     psaSystemAdminList.add(psAssign);
                 }
             }
             
             SObject[] updateUserData = usersToUpdate.toArray(new SObject[0]);
-            com.sforce.soap.metadata.SaveResult[] saveUserResult = orgConnection.update(updateUserData);
+            com.sforce.soap.partner.SaveResult[] saveUserResult = orgConnection.update(updateUserData);
 
             SObject[] createPSA = psaSystemAdminList.toArray(new SObject[0]);
-            com.sforce.soap.metadata.SaveResult[] savePSAResult = orgConnection.create(createPSA);
+            com.sforce.soap.partner.SaveResult[] savePSAResult = orgConnection.create(createPSA);
             
         }catch(Exception e){
             e.printStackTrace();
