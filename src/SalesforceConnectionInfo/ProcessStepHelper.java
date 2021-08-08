@@ -143,7 +143,7 @@ public class ProcessStepHelper{
 
             GetUserInfoResult userInfo = orgConnection.getUserInfo();
 
-            String queryStr = "Select id from User where isActive = true AND Id != '"+userInfo.getUserId()+"'";
+            String queryStr = "Select id,email,username from User where isActive = true AND Id != '"+userInfo.getUserId()+"'";
             QueryResult qrResult1 = orgConnection.query(queryStr);
             SObject[] activeUserList = qrResult1.getRecords();
 
