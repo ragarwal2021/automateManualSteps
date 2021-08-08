@@ -26,8 +26,8 @@ import com.sforce.soap.metadata.ConnectedAppOauthConfig;
 import com.sforce.soap.metadata.ConnectedAppAttribute;
 import com.sforce.soap.metadata.SaveResult;
 
-import.com.sforce.soap.tooling.ExecuteAnonymousResult;
-import.com.sforce.soap.tooling.ToolingConnection;
+import com.sforce.soap.tooling.ExecuteAnonymousResult;
+import com.sforce.soap.tooling.ToolingConnection;
 
 import com.sforce.soap.partner.PartnerConnection;
 import com.sforce.soap.partner.QueryResult;
@@ -155,7 +155,7 @@ public class ProcessStepHelper{
                 newUser.setField("Id",(String)thisUser.getField("Id"));
                 Strig Email = (String) thisUser.getField("Email");
                 //String sandboxName = System.getenv("sandboxName");
-                String sandboxName = 'stage';
+                String sandboxName = "stage";
                 Email += "."+sandboxName;
                 newUser.setField("Email",Email);
                 usersToUpdate.add(newUser);
