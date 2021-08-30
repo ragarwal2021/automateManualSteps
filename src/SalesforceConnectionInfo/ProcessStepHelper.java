@@ -154,11 +154,11 @@ public class ProcessStepHelper{
                 SObject newUser = new SObject();
                 newUser.setType("User");
                 newUser.setField("Id",(String)thisUser.getField("Id"));
-                String username = (String) thisUser.getField("Username");
-                System.out.println("username--> " + username);
+                String email = (String) thisUser.getField("Email");
                 //String sandboxName = System.getenv("sandboxName");
                 String sandboxName = "stage";
-                username += "."+sandboxName;
+                email += "."+sandboxName;
+                System.out.println("Email--> " + email);
                 newUser.setField("Username",username);
                 usersToUpdate.add(newUser);
             
