@@ -159,7 +159,7 @@ public class ProcessStepHelper{
                 String sandboxName = "stage";
                 email += "."+sandboxName;
                 System.out.println("Email--> " + email);
-                newUser.setField("Username",username);
+                newUser.setField("Username",(String) thisUser.getField("username"));
                 usersToUpdate.add(newUser);
             
             }
